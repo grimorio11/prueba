@@ -41,7 +41,7 @@ jobs:
 
   check-quality-gate:
     name: Check SonarQube Quality Gate
-    runs-on: ubuntu-latest
+    #runs-on: ubuntu-latest
     needs: build-and-analyze
     steps:
       - name: Wait for Quality Gate result
