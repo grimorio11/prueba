@@ -24,15 +24,19 @@ jobs:
         with:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
-
-      - name: Run SonarQube scan
+      
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn sonar:sonar \
-            -Dsonar.projectKey=my_project_key \
-            -Dsonar.host.url=https://sonar.mycompany.com \
-            -Dsonar.login=$SONAR_TOKEN
+      # - name: Run SonarQube scan
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   run: |
+      #     mvn sonar:sonar \
+      #       -Dsonar.projectKey=my_project_key \
+      #       -Dsonar.host.url=https://sonar.mycompany.com \
+      #       -Dsonar.login=$SONAR_TOKEN
 
   check-quality-gate:
     name: Check SonarQube Quality Gate
@@ -44,7 +48,7 @@ jobs:
         with:
           sonar-token: ${{ secrets.SONAR_TOKEN }}
         env:
-          SONAR_HOST_URL: https://sonar.mycompany.com
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
   deploy:
     name: Deploy Application
