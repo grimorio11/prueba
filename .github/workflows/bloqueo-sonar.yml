@@ -46,8 +46,8 @@ jobs:
     steps:
       - name: Wait for Quality Gate result
         uses: sonarsource/sonarqube-quality-gate-action@v1.1.0
-        with:
-          scanMetadataReportFile: .scannerwork/report-task.txt
+        # with:
+        #   scanMetadataReportFile: .scannerwork/report-task.txt
         
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
