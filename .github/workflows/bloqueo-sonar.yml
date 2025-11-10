@@ -35,14 +35,14 @@ jobs:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       - name: Run SonarQube scan
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        # env:
+        #   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        #   SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
           mvn sonar:sonar \
             -Dsonar.projectKey=grimorio11_prueba \
-            -Dsonar.host.url=SONAR_HOST_URL  \
-            -Dsonar.login=SONAR_TOKEN
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.java.binaries=target/classes
 
   check-quality-gate:
