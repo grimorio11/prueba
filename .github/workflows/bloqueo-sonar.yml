@@ -38,12 +38,6 @@ jobs:
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.java.binaries=target/classes
 
-      - name: Verificar archivos compilados
-        run: ls -l target/classes/com
-      - name: Verifica2
-        run: ls -l target
-      - name: Verifica3
-        run: ls -la . 
       - name: Busca archivo
         run: find . -name "report-task.txt"
 
