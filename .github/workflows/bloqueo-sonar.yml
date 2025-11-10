@@ -29,22 +29,22 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
       
-      # - name: SonarQube Scan
-      #   uses: SonarSource/sonarqube-scan-action@v6
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v6
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # - name: Run SonarQube scan
       #   env:
       #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      - name: Run SonarQube scan
-        # env:
-        #   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #   SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: |
-          mvn sonar:sonar \
-            -Dsonar.organization=grimorio11 \
-            -Dsonar.projectKey=grimorio11_prueba \
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-            -Dsonar.java.binaries=target/classes
+      #   run: |
+      #     mvn sonar:sonar \
+      #       -Dsonar.organization=grimorio11 \
+      #       -Dsonar.projectKey=grimorio11_prueba \
+      #       -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  \
+      #       -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+      #       -Dsonar.java.binaries=target/classes
 
       - name: SonarQube Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@master
