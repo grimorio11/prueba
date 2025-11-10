@@ -40,10 +40,10 @@ jobs:
 
       - name: Verificar archivos compilados
         run: | 
-          ls -la target/classes \
-          ls -al target \
-          ls -al . \
-          find . -name report-task.txt
+          ls -l target/classes \
+          ls -l target \
+          ls -l . \
+          find . -name "report-task.txt"
 
       - name: SonarCloud Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@master
