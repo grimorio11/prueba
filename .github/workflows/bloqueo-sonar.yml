@@ -42,7 +42,7 @@ jobs:
           mvn sonar:sonar \
             -Dsonar.projectKey=grimorio11_prueba \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  \
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.java.binaries=target/classes
 
   check-quality-gate:
