@@ -46,8 +46,8 @@ jobs:
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.java.binaries=.
 
-      # - name: Verificar archivos compilados
-      #   run: ls -l . # target/classes
+      - name: Verificar archivos compilados
+        run: find . -name "report-task.txt" # target/classes
 
       # - name: SonarQube Quality Gate check
       #   uses: sonarsource/sonarqube-quality-gate-action@master
