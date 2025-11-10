@@ -39,11 +39,13 @@ jobs:
             -Dsonar.java.binaries=target/classes
 
       - name: Verificar archivos compilados
-        run: | 
-          ls -l target/classes \
-          ls -l target \
-          ls -l . \
-          find . -name "report-task.txt"
+        run: ls -l target/classes/com
+      - name: Verifica2
+        run: ls -l target
+      - name: Verifica3
+        run: ls -la . 
+      - name: Busca archivo
+        run: find . -name "report-task.txt"
 
       - name: SonarCloud Quality Gate check
         uses: sonarsource/sonarqube-quality-gate-action@master
