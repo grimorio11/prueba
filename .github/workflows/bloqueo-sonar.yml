@@ -26,20 +26,20 @@ jobs:
           path: ~/.sonar/cache
           key: ${{ runner.os }}-sonar
       
-      # - name: SonarQube Scan
-      #   uses: SonarSource/sonarqube-scan-action@v6
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      - name: Run SonarQube scan
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        run: |
-          mvn sonar:sonar \
-            -Dsonar.projectKey=grimorio11_prueba \
-            -Dsonar.host.url=SONAR_HOST_URL  \
-            -Dsonar.login=SONAR_TOKEN
+      # - name: Run SonarQube scan
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      #   run: |
+      #     mvn sonar:sonar \
+      #       -Dsonar.projectKey=grimorio11_prueba \
+      #       -Dsonar.host.url=SONAR_HOST_URL  \
+      #       -Dsonar.login=SONAR_TOKEN
 
   check-quality-gate:
     name: Check SonarQube Quality Gate
